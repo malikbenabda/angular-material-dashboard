@@ -19,33 +19,6 @@ angular.module('angularMaterialAdmin', ['ngAnimate', 'ngCookies',
         data: {
           title: 'Dashboard'
         }
-      })
-      .state('home.profile', {
-        url: '/profile',
-        templateUrl: 'app/views/profile.html',
-        controller: 'ProfileController',
-        controllerAs: 'vm',
-        data: {
-          title: 'Profile'
-        }
-      })
-      .state('home.table', {
-        url: '/table',
-        controller: 'TableController',
-        controllerAs: 'vm',
-        templateUrl: 'app/views/table.html',
-        data: {
-          title: 'Table'
-        }
-      })
-      .state('home.data-table', {
-        url: '/data-table',
-        controller: 'DataTableController',
-        controllerAs: 'vm',
-        templateUrl: 'app/views/data-table.html',
-        data: {
-          title: 'Table'
-        }
       });
 
     $urlRouterProvider.otherwise('/dashboard');

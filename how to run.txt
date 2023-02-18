@@ -1,0 +1,21 @@
+
+follow readme instructions https://github.com/flatlogic/angular-material-dashboard, if error with build try 
+
+npm install
+
+npm install gulp
+
+create file npm-shrinkwrap.json with
+
+{
+  "dependencies": {
+    "graceful-fs": {
+        "version": "4.2.2"
+     }
+  }
+}
+npm install (again) (Not npm install gulp again! Very important - otherwise the error will be come back)
+
+gulp (now working)
+
+gulp serve
