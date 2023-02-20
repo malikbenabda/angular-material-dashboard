@@ -1,5 +1,4 @@
 <md-content layout="row" layout-align="center center" ng-controller="ChartController as vm">
-    <nvd3 data="vm.piechartData" options="vm.piechartOptions" title="Memory load"></nvd3>
-    <nvd3 data="vm.visitorsChartData" options="vm.chartOptionsVisitors" title="Visitors "></nvd3>
-    <nvd3 data="vm.warningsChartData" options="vm.chartOptionsWarning" title="Warnings"></nvd3>
+    <nvd3 flex data="vm.piechartData" options="vm.piechartOptions" title="Capacity"></nvd3>
+    <nvd3 flex data="vm.visitorsChartData" options="vm.chartOptionsVisitors" title="Visitors"></nvd3>
 </md-content>

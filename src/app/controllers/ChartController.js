@@ -9,53 +9,15 @@
         var vm = this;
 
         // TODO: move data to the service
-        vm.piechartData = [{key: 'memory', y: 42}, {key: 'free', y: 58}];
+        vm.piechartData = [{key: 'Booked', y: 42}, {key: 'free', y: 58}];
+
+        vm.capacityTot = (vm.piechartData[0].y + vm.piechartData[1].y) + " Places";
         // TODO: move data to the service
-
-        const data = [{
-            "key": "Mobile",
-            "color": "#d62728",
-            "values": [
-                {x: "China", y: 717723466.166},
-                {x: "India", y: 647356171.132},
-                {x: "United States of America", y: 157464952.272},
-                {
-                    x: "Indonesia",
-                    y: 125682412.393
-                }, {x: "Brazil", y: 98578067.1}, {
-                    x: "Pakistan",
-                    y: 93621293.316
-                }, {x: "Nigeria", y: 88370210.605}, {
-                    x: "Bangladesh",
-                    y: 79237050.772
-                }, {x: "Russian Federation", y: 65846330.629}, {x: "Japan", y: 61918921.999}
-            ]
-        }, {
-            "key": "Web",
-            "color": "#1f77b4",
-            "values": [
-                {x: "China", y: 667843070.834},
-                {
-                    x: "India",
-                    y: 604783424.868
-                }, {x: "United States of America", y: 162585763.728}, {
-                    x: "Indonesia",
-                    y: 124183218.607
-                }, {x: "Brazil", y: 101783857.9}, {
-                    x: "Pakistan",
-                    y: 88521300.684
-                }, {x: "Nigeria", y: 85245134.395}, {
-                    x: "Bangladesh",
-                    y: 77357911.228
-                }, {x: "Russian Federation", y: 76987358.371}, {x: "Japan", y: 65224655.001}]
-        }];
-
-
-        vm.multiBarChartData = data;
 
 
         // TODO: move data to the service
-        vm.visitorsChartData = [{key: 'Mobile', y: 5264}, {key: 'Desktop', y: 3872}];
+        vm.visitorsChartData = [{key: 'Mobile', y: 5264}, {key: 'Web', y: 3872}];
+        vm.totalUsers = (vm.visitorsChartData[0].y + vm.visitorsChartData[1].y) + " User";
 
 
         // TODO: move data to the service
@@ -69,35 +31,35 @@
             return [{values: sin, color: 'rgb(0, 150, 136)', area: true}];
         }
 
-        vm.chartOptionsWarning = {
-            chart: {
-                type: 'lineChart',
-                height: 210,
-                margin: {top: -10, left: -20, right: -20},
-                x: function (d) {
-                    return d.x
-                },
-                y: function (d) {
-                    return d.y
-                },
-                showLabels: false,
-                showLegend: false,
-                title: 'Over 9K',
-                showYAxis: false,
-                showXAxis: false,
-                tooltip: {
-                    contentGenerator: function (d) {
-                        return '<span class="custom-tooltip">' + Math.round(d.point.y) + '</span>'
+        /*    vm.chartOptionsWarning = {
+                chart: {
+                    type: 'lineChart',
+                    height: 210,
+                    margin: {top: -10, left: -20, right: -20},
+                    x: function (d) {
+                        return d.x
+                    },
+                    y: function (d) {
+                        return d.y
+                    },
+                    showLabels: false,
+                    showLegend: false,
+                    title: 'Over 9K',
+                    showYAxis: false,
+                    showXAxis: false,
+                    tooltip: {
+                        contentGenerator: function (d) {
+                            return '<span class="custom-tooltip">' + Math.round(d.point.y) + '</span>'
+                        }
                     }
                 }
-            }
-        };
-
+            };
+    */
         vm.chartOptionsVisitors = {
             chart: {
                 type: 'pieChart',
-                height: 210,
-                donut: true,
+                height: 500,
+                donut: "true",
                 x: function (d) {
                     return d.key;
                 },
@@ -108,15 +70,15 @@
                 color: ['rgb(0, 150, 136)', '#E75753'],
                 showLabels: false,
                 showLegend: false,
-                title: 'Over 9K',
+                title: vm.totalUsers,
                 margin: {top: -10}
             }
         };
-
         vm.piechartOptions = {
             chart: {
                 type: 'pieChart',
-                height: 210,
+
+                height: 500,
                 donut: true,
                 pie: {
                     startAngle: function (d) {
@@ -137,11 +99,51 @@
                 showLabels: false,
                 showLegend: false,
                 tooltips: false,
-                title: '42%',
+                title: vm.capacityTot,
                 titleOffset: -10,
                 margin: {bottom: -80, left: -20, right: -20}
             }
         };
+
+        let today = function (x){ return  new Date(Date.now()+ x*24*3600*1000).toDateString()}
+        const data = [{
+            "key": "Mobile Payment",
+            "color": "#d62728",
+            "values": [
+                {x: today(0), y:Math.floor(Math.random() * 100)},
+                {x: today(1), y: Math.floor(Math.random() * 100)},
+                {x: today(2), y: Math.floor(Math.random() * 100)},
+                {
+                    x: today( 3),
+                    y: Math.floor(Math.random() * 100)
+                }, {x: today(4 ), y: Math.floor(Math.random() * 100)}, {
+                    x: today(5 ),
+                    y: Math.floor(Math.random() * 100)
+                }, {x: today(6 ), y: Math.floor(Math.random() * 100)}, {
+                    x: today(7 ),
+                    y: Math.floor(Math.random() * 100)
+                }, {x: today( 8), y: Math.floor(Math.random() * 100)}, {x: today( 9), y: Math.floor(Math.random() * 100)}
+            ]
+        }, {
+            "key": "Operator",
+            "color": "#1f77b4",
+            "values": [
+                {x: today( 0), y: Math.floor(Math.random() * 100)},
+                {
+                    x: today( 1),
+                    y: Math.floor(Math.random() * 100)
+                }, {x: today( 2), y: Math.floor(Math.random() * 100)}, {
+                    x: today(3 ),
+                    y: Math.floor(Math.random() * 100)
+                }, {x: today( 4), y:Math.floor(Math.random() * 100)}, {
+                    x: today( 5),
+                    y: Math.floor(Math.random() * 100)
+                }, {x: today( 6), y: Math.floor(Math.random() * 100)}, {
+                    x: today(7 ),
+                    y: Math.floor(Math.random() * 100)
+                }, {x: today( 8), y: Math.floor(Math.random() * 100)}, {x: today( 9), y:Math.floor(Math.random() * 100)}]
+        }];
+        vm.multiBarChartData = data;
 
         vm.multiBarChartOptions = {
             chart: {
@@ -151,9 +153,7 @@
                 //  color : ['rgb(0, 150, 136)', '#E75753', 'rgb(235, 235, 235)'],
                 showLabels: true,
                 showLegend: true,
-                title: "New Users",
-                //margin: { top: -10, left: -20, right: -20 },
-                margin: 350
+                title: "Revenue By stream",
             }
         };
 
